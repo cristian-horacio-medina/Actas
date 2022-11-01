@@ -80,7 +80,7 @@ foreach($alumnos as $dato){ ?>
     <div class="col-md-1"> 
         <?php 
             
-            $fecha1=(str_replace('-','/',date('m', strtotime($FExamen)))); echo $fecha1;?>
+            $fecha1=(str_replace('-','/',date('m', strtotime($Fecha_examen)))); echo $fecha1;?>
             
             <input type="hidden" class="form-control" value="<?php 
             switch ($fecha1) {
@@ -129,7 +129,7 @@ foreach($alumnos as $dato){ ?>
        
     <div class="col-md-1"> 
            
-        <input type="hidden" class="form-control" value="<?php echo str_replace('-','/',date('Y', strtotime($FExamen)));?>"  size="15" name="Año">
+        <input type="hidden" class="form-control" value="<?php echo str_replace('-','/',date('Y', strtotime($Fecha_examen)));?>"  size="15" name="Año">
     </div>
     
     <?php foreach($alumnos as $dato){ ?> 
