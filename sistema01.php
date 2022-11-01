@@ -14,28 +14,42 @@
             border: 1px solid black;
             border-collapse: collapse;
         }
-
-        #contenido1 {
-            display: none;
-        }
-
-        #contenido2 {
-            /*display: none;*/
-        }
-        </style>
+    </style>
     <!---El código de abajo es para ocultar los inputs para actas de desaprobados--->
     <script type="text/javascript">
-        var contenido_2 = document.getElementById("contenido2");
-        var check2 = document.getElementById("check2");
+        function showContent() {
+            element = document.getElementById("content");
 
-        function mostrar(){
-            if(check2.checked){
-            contenido_2.style.display = "none";
-          
-        } 
+            check = document.getElementById("check");
 
-                      
-        
+            if (check.checked) {
+                element.style.display = 'block';
+                element1.style.display = 'none';
+
+
+            } else {
+                element.style.display = 'none';
+            }
+
+
+        }
+
+        function showContent2() {
+
+            element1 = document.getElementById("contenido1");
+
+            check1 = document.getElementById("check1");
+
+            if (check1.checked) {
+                element1.style.display = 'block';
+                element.style.display = 'none';
+
+            } else {
+                element1.style.display = 'none';
+            }
+
+
+        }
     </script>
 
 </head>
@@ -82,74 +96,101 @@
     <?php }; ?>
     <hr>
     <b>Generar acta alumno aprobado</b>
-    <input type="radio" name="check" id="check1" checked />
-    <b>Generar acta alumno desaprobado (tildar)</b>
-    <input type="radio" name="check" id="check2" onchange="javascript:mostrar();"/>
-    <br>   
+    <input type="radio" name="check" id="check1" onclick="javascript:showContent2();" />
+
+    <b>Generar acta alumno desaprobado</b>
+    <input type="radio" name="check" id="check" value="1" onclick="javascript:showContent();" />
     <br>
-    <form action="Datos_acta.php" method="post">
+    <br>
+    <div id="contenido1" style="display : none">
+        <form action="Datos_acta.php" method="post">
 
-        <table class="tabla-sistema">
 
-            <tr>
-                <td>Abreviatura</td>
-                <td>Asignatura</td>
-                <td>Nota</td>
-                <td>Acta</td>
-                <td>Fecha</td>
-                <td>Seleccione asignatura</td>
 
-            </tr>
-            <?php foreach ($alumnos1 as $dato) { ?>
+            <table class="tabla-sistema">
+
                 <tr>
-                    <td><?php echo $dato['Abreviatura']; ?></td>
-                    <td><?php echo $dato['Asignatura']; ?></td>
-                    <td><?php echo $dato['Nota']; ?></td>
-                    <td><?php echo $dato['Acta']; ?></td>
-                    <?php $newDate = date("d-m-Y", strtotime($dato['Fecha'])); ?>
-                    <td><?php echo $newDate; ?></td>
-                    <td><input type="radio" name="Fecha_examen" value="<?php echo $newDate; ?>" required /></td>
+                    <td>Abreviatura</td>
+                    <td>Asignatura</td>
+                    <td>Nota</td>
+                    <td>Acta</td>
+                    <td>Fecha</td>
+                    <td>Seleccione asignatura</td>
+
                 </tr>
-            <?php }; ?>
-        </table>
+                <?php foreach ($alumnos1 as $dato) { ?>
+                    <tr>
+                        <td><?php echo $dato['Abreviatura']; ?></td>
+                        <td><?php echo $dato['Asignatura']; ?></td>
+                        <td><?php echo $dato['Nota']; ?></td>
+                        <td><?php echo $dato['Acta']; ?></td>
+                        <?php $newDate = date("d-m-Y", strtotime($dato['Fecha'])); ?>
+                        <td><?php echo $newDate; ?></td>
+                        <td><input type="radio" name="Fecha_examen" value="<?php echo $newDate; ?>" required /></td>
+                    </tr>
+                <?php }; ?>
+            </table>
 
 
-        <div class="mb-3">
+            <div class="mb-3">
 
-            <br>
+                <br>
+                <input type="hidden" class="form-control" name="Matricula" id="Matricula" value="<?php echo $matricula; ?>" aria-describedby="helpId" placeholder="">
+
+                <button type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+    </div>
+    </form>
+    <div id="content" style="display : none">
+        <form action="Datos_acta_ausente.php" method="post">
+            <table class="tabla-sistema">
+
+                <tr>
+                    <td>Abreviatura</td>
+                    <td>Asignatura</td>
+                    <td>Nota</td>
+                    <td>Acta</td>
+                    <td>Fecha</td>
+                    <td>Seleccione asignatura</td>
+
+                </tr>
+                <?php foreach ($alumnos1 as $dato) { ?>
+                    <tr>
+                        <td><?php echo $dato['Abreviatura']; ?></td>
+                        <td><?php echo $dato['Asignatura']; ?></td>
+                        <td><?php echo $dato['Nota']; ?></td>
+                        <td><?php echo $dato['Acta']; ?></td>
+                        <?php $newDate = date("d-m-Y", strtotime($dato['Fecha'])); ?>
+                        <td><?php echo $newDate; ?></td>
+                        <td><input type="radio" name="Fecha_examen" value="<?php echo $newDate; ?>" required /></td>
+                    </tr>
+                <?php }; ?>
+            </table>
+
             <input type="hidden" class="form-control" name="Matricula" id="Matricula" value="<?php echo $matricula; ?>" aria-describedby="helpId" placeholder="">
-         <div class="contenido1">       
-            <button type="submit" class="btn btn-primary">Enviar</button>
-         </div>
-        </div>
+            
+            <form action="Datos_acta_ausente.php" method="post">
+
+                <input type="hidden" class="form-control" name="Matricula" id="Matricula" value="<?php echo $matricula; ?>" aria-describedby="helpId" placeholder="">
+                <h4>Nota: <select name="Nota" size="1">
+                        <option value=1>1</option>
+                        <option value=2>2</option>
+                        <option value=3>3</option>
+                        <option value=x>x</option>
+                    </select><br></h4>
+                <h4>Libro: <input type="text" name="Libro" id="Libro" value="" required><br></h4>
+                <h4>Folio: <input type="text" name="Folio" id="Folio" value="" required><br></h4>
+                <h4>Fecha de examen: <input type="date" name="Fecha_examen" id="Fecha_examen" value="" required></h4>
+                <button type="submit" class="btn btn-primary">Enviar</button>
+
+    </div>
     </form>
     <hr>
+    <br>
+    <input type="button" onclick="location.href='index.php';" value="Inicio" />
 
-    <form action="Datos_acta_ausente.php" method="post">
-
-        <div id="contenido2" >
-            <br>
-            <b>Por favor seleccione la asignatura arriba y complete los datos solicitados abajo</b>
-            <br>
-
-            <input type="hidden" class="form-control" name="Matricula" id="Matricula" value="<?php echo $matricula; ?>" aria-describedby="helpId" placeholder="">
-            <br>
-
-            <h4>Nota: <select name="Nota" size="1">
-                    <option value=1>1</option>
-                    <option value=2>2</option>
-                    <option value=3>3</option>
-                    <option value=x>x</option>
-                </select><br></h4>
-            <h4>Libro: <input type="text" name="Libro" id="Libro" value="" required><br></h4>
-            <h4>Folio: <input type="text" name="Folio" id="Folio" value="" required><br></h4>
-            <h4>Fecha de examen: <input type="date" name="Fecha_examen" id="Fecha_examen" value="" required></h4>
-            <button type="submit" class="btn btn-primary">Enviar</button>
-
-        </div>
-        <hr>
-        <input type="button" onclick="location.href='index.php';" value="Inicio" />
-        <br>
 </body>
+
+<br>
 
 </html>
