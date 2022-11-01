@@ -20,7 +20,7 @@
         }
 
         #contenido2 {
-            display: none;
+            /*display: none;*/
         }
         </style>
     <!---El código de abajo es para ocultar los inputs para actas de desaprobados--->
@@ -29,8 +29,9 @@
         var check2 = document.getElementById("check2");
 
         function mostrar(){
+            if(check2.checked){
             contenido_2.style.display = "none";
-            
+          
         } 
 
                       
@@ -83,7 +84,7 @@
     <b>Generar acta alumno aprobado</b>
     <input type="radio" name="check" id="check1" checked />
     <b>Generar acta alumno desaprobado (tildar)</b>
-    <input type="radio" name="check" id="check2" onchange="mostrar();"/>
+    <input type="radio" name="check" id="check2" onchange="javascript:mostrar();"/>
     <br>   
     <br>
     <form action="Datos_acta.php" method="post">
