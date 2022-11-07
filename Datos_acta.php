@@ -44,7 +44,7 @@
         if ($hola == "SI") {
 
             header("Location: http://localhost/actas/Datos_acta_ausente.php");
-            echo "Holaaaaaaaa";
+            
             $matricula = $_SESSION['Matricula'];
             $FExamen = $_SESSION['Fecha_examen'];
         }

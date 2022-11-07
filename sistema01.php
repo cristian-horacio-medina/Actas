@@ -99,7 +99,7 @@
     <input type="radio" name="check" id="check1" onclick="javascript:showContent2();" />
 
     <b>Generar acta alumno desaprobado</b>
-    <input type="radio" name="check" id="check" value="1" onclick="javascript:showContent();" />
+    <input type="radio" name="check" id="check" value="1" onchange="javascript:showContent();" />
     <br>
     <br>
     <div id="contenido1" style="display : none">

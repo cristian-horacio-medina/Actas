@@ -183,8 +183,7 @@ foreach($alumnos as $dato){ ?>
                 $nota_en_letras=99;
 
                 }
-                echo "Hola, pasé el If";            
-                var_dump($nota_en_letras);
+                
             ?>
             
             <input type="hidden" class="form-control" value="<?php 
