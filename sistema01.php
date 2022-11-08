@@ -60,9 +60,51 @@
     require_once("autoload.php");
     require_once("Conexion.php");
     require_once("Alumno.php");
+
+    $aErrores = array();
+    $aMensajes = array();
+
+    //var_dump($_POST['Matricula']);
+
+    if( (isset($_POST['Matricula']) ) && (!empty($_POST['Matricula'])) )
+    {
+        if( is_numeric($_POST['Matricula']) )
+            $aMensajes[] ="Matrícula: [".$_POST['Matricula']."]";
+            
+        else
+            $aErrores[] = "El campo matrícula debe contener un número.";
+            
+            
+    } 
+    
+    
+
+    if( count($aErrores) > 0 )
+        {
+            echo "<p>ERRORES ENCONTRADOS:</p>";
+            // Mostrar los errores:
+            for( $contador=0; $contador < count($aErrores); $contador++ )
+                echo $aErrores[$contador]."<br/>";
+                echo "<p><a href='index.php'>Volver al inicio</a></p>";   
+                die();
+
+        
+        }
+            else
+        {    
+            // Mostrar los mensajes:
+            for( $contador=0; $contador < count($aMensajes); $contador++ )
+                echo $aMensajes[$contador]."<br/>";
+                
+
+        }
+       
+     
+    
+    
+
     $_SESSION['Matricula'] = $_POST['Matricula'];
-
-
+    
 
     $objAlumno = new Alumno();
 

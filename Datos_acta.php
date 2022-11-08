@@ -35,7 +35,7 @@
     $_SESSION['Matricula'] = $_POST['Matricula'];
     $_SESSION['Fecha_examen'] = $_POST['Fecha_examen'];
 
-    var_dump($_SESSION['Fecha_examen']);
+    //var_dump($_SESSION['Fecha_examen']);
 
     if (isset($_POST['acta_c_ausente'])) {
         $hola = ($_POST['acta_c_ausente']);

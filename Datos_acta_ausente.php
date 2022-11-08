@@ -35,8 +35,8 @@ $_SESSION['Matricula']=$_POST['Matricula'];
 
 $_SESSION['Fecha_examen']=$_POST['Fecha_examen'];
 
-var_dump($_SESSION['Matricula']);
-var_dump($_SESSION['Fecha_examen']);
+//var_dump($_SESSION['Matricula']);
+//var_dump($_SESSION['Fecha_examen']);
 
 $objAlumno = new Alumno();
 
@@ -179,7 +179,7 @@ foreach($alumnos as $dato){ ?>
             $nota_en_letras= $_POST['Nota'];
             
             if($nota_en_letras=='x'){
-                var_dump($nota_en_letras);
+                //var_dump($nota_en_letras);
                 $nota_en_letras=99;
 
                 }
