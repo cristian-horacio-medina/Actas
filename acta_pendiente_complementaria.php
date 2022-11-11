@@ -5,7 +5,7 @@
     <style type="text/css" media="print">
       .invisible {display:none}
      </style> 
-    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="style.css">
     <!--- href="https://mifaecc.edu.ar/apk/administrativo_php/public/export/print/css/print.css"    --->
 
     <title>Acta Complementaria Regular/Complementaria</title>
