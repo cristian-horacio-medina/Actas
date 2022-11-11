@@ -15,9 +15,8 @@
   <h3>Generar actas complementarias</h3>
 
   <hr>
-  <form action="sistema01.php" method="post">
-    <!---"sistema.php"  --->
-
+  <form action="sistema.php" method="post">
+    
     <label for="" class="form-label">Ingrese número de matrícula</label>
     <br><br>
     <input class="f1" type="text" name="Matricula" id="Matricula" aria-describedby="helpId" placeholder="" required>

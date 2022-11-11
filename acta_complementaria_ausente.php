@@ -8,7 +8,7 @@
       display: none
     }
   </style>
-  <link rel="stylesheet" href="style1.css">
+  <link rel="stylesheet" href="style.css">
   <title>Acta Complementaria Regular/Complementaria</title>
   <script type="text/javascript">
     window.onload = function() {
